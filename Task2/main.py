@@ -1,49 +1,49 @@
 from decimal import Decimal
 
 
-def saveToFile(fileName, value):
+def save_to_file(fileName, value):
     with open('Results/' + fileName, 'w') as file:
         file.write(str(value))
 
 
-def findMaxInt():
-    maxInt = 2
+def find_max_int():
+    max_int = 2
     while True:
         try:
-            maxInt = maxInt ** maxInt
+            max_int = max_int ** max_int
         except MemoryError:
-            saveToFile('MaxInt.txt', maxInt)
+            save_to_file('MaxInt.txt', max_int)
             return None
 
 
-def findMinInt():
-    minInt = -2
+def find_min_int():
+    min_int = -2
     while True:
         try:
-            minInt = (minInt ** abs(minInt)) * -1
+            min_int = (min_int ** abs(min_int)) * -1
         except MemoryError:
-            saveToFile('MinInt.txt', minInt)
+            save_to_file('MinInt.txt', min_int)
             return None
 
 
-def floatWithMoney():
+def float_with_money():
     return 0.1 + 0.1 + 0.1
 
 
-def decimalWithMoney():
+def decimal_with_money():
     number = Decimal("0.1")
     return number + number + number
 
 
-def maxString():
-    testStr = ' '
+def max_string():
+    test_str = ' '
     while True:
         try:
-            testStr = testStr * (1 + len(testStr))
+            test_str = test_str * (1 + len(test_str))
         except MemoryError:
-            saveToFile('MaxLenStr.txt', str(len(testStr)))
+            save_to_file('MaxLenStr.txt', str(len(test_str)))
             return None
 
 
-def sizeOfBool():
+def size_of_bool():
     pass
