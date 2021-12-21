@@ -22,14 +22,16 @@ while True:
     try:
         client_connection, client_address = server_socket.accept()
         count += 1
-        data_arr = []
+        byte_str = b''
         print(f"Accepted {count} {client_address} connections so far")
         while True:
-            data = client_connection.recv(8192)
-            data_arr.append(data)
+            data = client_connection.recv(1024)
+            byte_str += data
             if data != b'':
-                for i in data_arr:
-                    print(json.loads(i.decode()))
+                try:
+                    print(json.loads(byte_str))
+                except json.decoder.JSONDecodeError:
+                    continue
                 msg1 = "Hi Client! Read everything you sent".encode()
                 msg2 = "Now I will close your connection".encode()
                 client_connection.send(msg1)

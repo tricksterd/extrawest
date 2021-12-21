@@ -11,7 +11,7 @@ def send(data):
     socket_object.sendall(msg.encode())
 
     while True:
-        data = socket_object.recv(8192)
+        data = socket_object.recv(1024)
         print(data.decode())
         if data == b'':
             print("Connection closed")
@@ -22,5 +22,5 @@ def send(data):
 big_data = list(range(100000))
 
 while big_data:
-    send(big_data[:100])
-    big_data = big_data[100:]
+    send(big_data[:500])
+    big_data = big_data[500:]
